@@ -6,8 +6,8 @@ version: '3.9'
 x-default-logging: &logging
   driver: "json-file"
   options:
-    max-size: "10m"
-    max-file: "3"
+    max-size: "5m"
+    max-file: "5"
 
 networks:
   default:
@@ -73,7 +73,7 @@ services:
     command:
       - --web.console.templates=/etc/prometheus/consoles
       - --web.console.libraries=/etc/prometheus/console_libraries
-      - --storage.tsdb.retention.time=1h
+      - --storage.tsdb.retention.time=2h
       - --config.file=/etc/prometheus/prometheus-config.yaml
       - --storage.tsdb.path=/prometheus
       - --web.enable-lifecycle
@@ -105,4 +105,4 @@ services:
     environment:
       - GF_INSTALL_PLUGINS=grafana-opensearch-datasource
     volumes:
-      - ./src/grafa
+      - ./src/graf
